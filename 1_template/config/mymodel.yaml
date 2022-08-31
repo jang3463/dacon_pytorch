@@ -1,17 +1,19 @@
-epochs: 10
+epochs: 50
 resume: None
-learning_rate: 0.001
+learning_rate: 2e-2
 weight_decay: 10e-6
 inference_device: "cuda"
+SEED: 42
+IMG_SIZE: 128
 
 train:
-  batch_size: 4
+  batch_size: 12
   num_workers: 4
-  valid_size: 0.3
+  valid_size: 0.2
   train_path: "./dataset/medium_sample/train"
 
 test:
-  batch_size: 4
+  batch_size: 12
   num_workers: 4
   test_path: "./dataset/medium_sample/test"
 
