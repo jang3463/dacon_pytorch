@@ -6,9 +6,12 @@
 # @Author : seungmin
 
 import os
+from glob import glob
+import pandas as pd
 
 from PIL import Image
 import numpy as np
+import cv2
 
 from torch.utils.data import DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler
@@ -16,19 +19,40 @@ import torchvision.transforms as T
 
 np.random.seed(0)
 
-def make_datapath_list(root_path):
-    txt_list = os.listdir(root_path)
+def get_train_data(data_dir):
+    label_df = pd.read_csv('../../dataset/train.csv')
+    img_path_list = []
+    label_list = []
 
-    data_list = []
-    for idx, txt in enumerate(txt_list):
-        with open(os.path.join(root_path, txt)) as f:
-            file_list = [line.rstrip() for line in f]
-            file_list = [line for line in file_list if line]
-            data_list.extend(file_list)
+    img_path_list.extend(glob(os.path.join(data_dir,'*.PNG')))
+    img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0]))
 
-    print("\nNumber of classes: {}".format(len(txt_list)))
-    print("Number of training data: {}".format(len(data_list)))
-    return data_list, txt_list
+    label_list.extend(label_df['label'])
+
+    return img_path_list, label_list
+
+def get_test_data(data_dir):
+    img_path_list = []
+
+    img_path_list.extend(glob(os.path.join(data_dir,'*.PNG')))
+    img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0]))
+
+    return img_path_list
+
+
+# def make_datapath_list(root_path):
+#     txt_list = os.listdir(root_path)
+
+#     data_list = []
+#     for idx, txt in enumerate(txt_list):
+#         with open(os.path.join(root_path, txt)) as f:
+#             file_list = [line.rstrip() for line in f]
+#             file_list = [line for line in file_list if line]
+#             data_list.extend(file_list)
+
+#     print("\nNumber of classes: {}".format(len(txt_list)))
+#     print("Number of training data: {}".format(len(data_list)))
+#     return data_list, txt_list
 
 class MyDataset(object):
 
