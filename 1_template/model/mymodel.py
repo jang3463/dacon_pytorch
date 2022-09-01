@@ -14,7 +14,8 @@ class MyModel(nn.Module):
     def __init__(self, base_model):
         super(MyModel, self).__init__()
         self.model_dict = {"my_model_class_1": models.resnet50(pretrained=False),
-                            "my_model_class_2": models.resnet152(pretrained=False)}
+                            "my_model_class_2": models.resnet152(pretrained=False),
+                            "dacon_landmark": models.efficientnet_b3(pretrained=False)}
 
         mymodel = self._get_basemodel(base_model)
         self.features = nn.Sequential(*list(mymodel.children())[:-1])
@@ -31,3 +32,4 @@ class MyModel(nn.Module):
         h = self.features(x)
         h = h.squeeze()
         return h
+    
