@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # @Filename : utils
-# @Date : 2021-09-01-10-35
+# @Date : 2022-09-01-10-35
 # @Project : pytorch_basic
-# @Author : seungmin
+# @Author : Jang
 
 import os
 import sys
 import time
 
+import torch
 import torch.nn as nn
 import torch.nn.init as init
 
@@ -49,8 +50,8 @@ def init_params(net):
                 init.constant(m.bias, 0)
 
 
-_, term_width = os.popen('stty size', 'r').read().split()
-term_width = int(term_width)
+# _, term_width = os.popen('stty size', 'r').read().split()
+term_width = int(80)
 
 TOTAL_BAR_LENGTH = 65.
 last_time = time.time()
