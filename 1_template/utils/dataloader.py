@@ -35,7 +35,6 @@ def get_test_data(data_dir):
     img_path_list = []
 
     img_path_list.extend(glob(os.path.join(data_dir,'*.PNG')))
-    img_path_list.extend(glob(os.path.join))
     img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0][-3:]))
 
     return img_path_list
