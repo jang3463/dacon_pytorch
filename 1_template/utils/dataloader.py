@@ -20,7 +20,7 @@ import torchvision.transforms as T
 np.random.seed(0)
 
 def get_train_data(data_dir):
-    label_df = pd.read_csv('../../dataset/train.csv')
+    label_df = pd.read_csv('../dataset/train.csv')
     img_path_list = []
     label_list = []
 
@@ -35,6 +35,7 @@ def get_test_data(data_dir):
     img_path_list = []
 
     img_path_list.extend(glob(os.path.join(data_dir,'*.PNG')))
+    img_path_list.extend(glob(os.path.join))
     img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0]))
 
     return img_path_list
@@ -70,7 +71,7 @@ class CustomDataset(Dataset):
 
         image = cv2.imread(img_path) # 필요한 경우, .resize((224,224)), .convert('RGB')
 
-        if self.transform is not None:
+        if self.transforms is not None:
             image = self.transforms(image)
 
         if self.train_mode:
@@ -111,12 +112,12 @@ class MyTrainSetWrapper(object):
         self.num_workers = num_workers
         self.valid_size = valid_size
         self.path = train_path
-        self.img_size = image_size
+        self.image_size = image_size
 
     def get_data_loaders(self):
         data_augment = self._get_train_transform()
 
-        train_dataset = CustomDataset(get_train_data(self.path)[0], get_train_data(self.path)[1], train_mode=True,transform=data_augment)
+        train_dataset = CustomDataset(get_train_data(self.path)[0], get_train_data(self.path)[1], train_mode=True,transforms=data_augment)
 
         train_loader, valid_loader = self.get_train_validation_data_loaders(train_dataset)
 
@@ -186,7 +187,7 @@ class MyTestSetWrapper(object):
     def get_test_loaders(self):
         data_augment = self._get_test_transform()
 
-        test_dataset = CustomDataset(get_test_data(self.path), train_mode=False,transform=data_augment)
+        test_dataset = CustomDataset(get_test_data(self.path), train_mode=False,transforms=data_augment)
 
         test_loader = DataLoader(test_dataset, batch_size=self.batch_size, num_workers=self.num_workers,
                                  shuffle=False, pin_memory=True)
