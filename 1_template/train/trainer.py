@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # @Filename : trainer
-# @Date : 2021-09-01-09-17
+# @Date : 2022-09-01-09-17
 # @Project : pytorch_basic
-# @Author : seungmin
+# @Author : Jang
 
 import torch
 import torch.nn as nn
@@ -20,9 +20,9 @@ from utils import utils
 from model.mymodel import MyModel
 
 print("#########################################")
-print("#       TRAINER TEMPLATE.  v1.0         #")
+print("#       TRAINER TEMPLATE.  v2.0         #")
 print("#                                       #")
-print("#                   -Promedius Inc.-    #")
+print("#                   -Jang Inc.-         #")
 print("#                                       #")
 print("#########################################")
 

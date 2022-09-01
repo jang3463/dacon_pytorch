@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # @Filename : dataloader
-# @Date : 2021-09-01-09-06
+# @Date : 2022-09-01-09-06
 # @Project : pytorch_basic
-# @Author : seungmin
+# @Author : Jang
 
 import os
 from glob import glob

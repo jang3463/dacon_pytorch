@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # @Filename : utils
-# @Date : 2021-09-01-10-35
+# @Date : 2022-09-01-10-35
 # @Project : pytorch_basic
-# @Author : seungmin
+# @Author : Jang
 
 import os
 import sys

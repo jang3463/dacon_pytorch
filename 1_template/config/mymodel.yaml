@@ -1,7 +1,7 @@
 epochs: 50
 resume: None
-learning_rate: 2e-2
-weight_decay: 10e-6
+learning_rate: 0.001
+weight_decay: 0.000001
 inference_device: "cuda"
 SEED: 42
 

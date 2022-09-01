@@ -1,0 +1,22 @@
+epochs: 50
+resume: None
+learning_rate: 0.001
+weight_decay: 0.000001
+inference_device: "cuda"
+SEED: 42
+
+train:
+  batch_size: 12
+  num_workers: 4
+  valid_size: 0.2
+  train_path: "../dataset/train"
+  image_size: 128
+
+test:
+  batch_size: 12
+  num_workers: 4
+  test_path: "../dataset/test"
+  image_size: 128
+
+model:
+  base_model: "dacon_landmark"
