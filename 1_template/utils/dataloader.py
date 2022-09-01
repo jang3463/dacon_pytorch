@@ -128,7 +128,6 @@ class MyTrainSetWrapper(object):
                                      T.RandomHorizontalFlip(),
                                      T.RandomVerticalFlip(),
                                      T.RandomRotation(10),
-                                     T.RandomAffine(0, shear=10, scale=(0.8, 1.2)),
                                      T.ToTensor(),
                                      T.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])])
         return data_transforms
@@ -175,7 +174,12 @@ class MyTestSetWrapper(object):
         self.path = test_path
 
     def _get_test_transform(self):
-        data_transforms = T.Compose([T.ToTensor(),
+        data_transforms = T.Compose([T.ToPILImage(),
+                                     T.Resize(self.image_size),
+                                    #  T.RandomHorizontalFlip(),
+                                    #  T.RandomVerticalFlip(),
+                                    #  T.RandomRotation(10),
+                                     T.ToTensor(),
                                      T.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])])
         return data_transforms
 
