@@ -25,7 +25,7 @@ def get_train_data(data_dir):
     label_list = []
 
     img_path_list.extend(glob(os.path.join(data_dir,'*.PNG')))
-    img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0]))
+    img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0][-3:]))
 
     label_list.extend(label_df['label'])
 
@@ -36,7 +36,7 @@ def get_test_data(data_dir):
 
     img_path_list.extend(glob(os.path.join(data_dir,'*.PNG')))
     img_path_list.extend(glob(os.path.join))
-    img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0]))
+    img_path_list.sort(key = lambda x :int(x.split('/')[-1].split('.')[0][-3:]))
 
     return img_path_list
 
