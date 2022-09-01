@@ -18,4 +18,4 @@ test:
   test_path: "./dataset/medium_sample/test"
 
 model:
-  base_model: "my_model_class_1"
+  base_model: "dacon_landmark"
